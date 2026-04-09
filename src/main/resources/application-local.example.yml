@@ -1,0 +1,62 @@
+# 本地开发环境配置模板
+# 复制此文件为 application-local.yml 并填入真实的敏感信息
+
+# 数据库密码
+DB_PASSWORD: your-database-password
+
+# Redis 密码（如果有的话，没有就留空）
+REDIS_PASSWORD:
+
+# DeepSeek AI 配置
+# 获取地址：https://platform.deepseek.com/
+DEEPSEEK_API_KEY: your-deepseek-api-key
+DEEPSEEK_BASE_URL: https://api.deepseek.com
+DEEPSEEK_MODEL: deepseek-chat
+
+# 阿里云 DashScope 配置（用于智能路由和图片生成）
+# 获取地址：https://dashscope.console.aliyun.com/
+DASHSCOPE_API_KEY: your-dashscope-api-key
+DASHSCOPE_BASE_URL: https://dashscope.aliyuncs.com/compatible-mode/v1
+DASHSCOPE_MODEL: qwen-turbo
+DASHSCOPE_IMAGE_MODEL: wan2.2-t2i-flash
+
+# 腾讯云 COS 对象存储配置
+# 获取地址：https://console.cloud.tencent.com/cos
+COS_HOST: your-custom-domain.com
+COS_SECRET_ID: your-tencent-cloud-secret-id
+COS_SECRET_KEY: your-tencent-cloud-secret-key
+COS_REGION: ap-shanghai
+COS_BUCKET: your-bucket-name
+
+# Pexels 图片搜索配置
+# 获取地址：https://www.pexels.com/api/
+PEXELS_API_KEY: your-pexels-api-key
+
+# AI 模型详细配置（如果需要覆盖默认配置）
+langchain4j:
+  open-ai:
+    chat-model:
+      base-url: https://api.deepseek.com
+      api-key: your-deepseek-api-key
+      model-name: deepseek-chat
+      strict-json-schema: true
+      response-format: json_object
+      max-tokens: 8192
+      log-requests: false
+      log-responses: false
+      max-retries: 3
+    streaming-chat-model:
+      base-url: https://api.deepseek.com
+      api-key: your-deepseek-api-key
+      model-name: deepseek-chat
+      max-tokens: 8192
+      log-requests: false
+      log-responses: false
+    reasoning-streaming-chat-model:
+      base-url: https://api.deepseek.com
+      api-key: your-deepseek-api-key
+      model-name: deepseek-chat
+      max-tokens: 8192
+      temperature: 0.7
+      log-requests: false
+      log-responses: false

@@ -1,0 +1,187 @@
+/* ==========================================
+   全局CSS变量定义 - 深色科技风主题
+   ========================================== */
+
+:root {
+  /* 主色调 - 紫色系（更深的色调） */
+  --primary-color: #5568d3;
+  --secondary-color: #633a8a;
+  --accent-color: #d87aee;
+
+  /* 渐变色（更暗） */
+  --gradient-primary: linear-gradient(135deg, #5568d3 0%, #633a8a 100%);
+  --gradient-text: linear-gradient(135deg, #5568d3 0%, #633a8a 50%, #d87aee 100%);
+  --gradient-hover: linear-gradient(135deg, #633a8a 0%, #d87aee 100%);
+
+  /* 背景色（更深的黑色） */
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #0f0f0f;
+
+  /* 卡片背景（更低透明度） */
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-bg-hover: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.03);
+  --card-border-hover: rgba(102, 126, 234, 0.2);
+
+  /* 文字颜色（更亮更显眼） */
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+
+  /* 阴影（更暗淡） */
+  --shadow-sm: 0 5px 20px rgba(85, 104, 211, 0.15);
+  --shadow-md: 0 10px 40px rgba(85, 104, 211, 0.2);
+  --shadow-lg: 0 30px 60px rgba(85, 104, 211, 0.25);
+  --shadow-hover: 0 30px 60px rgba(85, 104, 211, 0.35);
+
+  /* 边框圆角 */
+  --border-radius-sm: 10px;
+  --border-radius-md: 20px;
+  --border-radius-lg: 30px;
+  --border-radius-full: 50px;
+
+  /* 间距 */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 60px;
+
+  /* 动画时长 */
+  --duration-fast: 0.3s;
+  --duration-normal: 0.5s;
+  --duration-slow: 0.8s;
+
+  /* 缓动函数 */
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ==========================================
+   全局基础样式
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(85, 104, 211, 0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(99, 58, 138, 0.12), transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(216, 122, 238, 0.1), transparent 50%),
+    radial-gradient(ellipse at 90% 90%, rgba(85, 104, 211, 0.08), transparent 50%),
+    var(--bg-primary);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  cursor: none; /* 隐藏默认光标，使用自定义光标 */
+}
+
+/* 移动端恢复默认光标 */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-hover);
+}
+
+/* 选择文本样式 */
+::selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   通用工具类
+   ========================================== */
+
+/* 渐变文字 */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 渐变背景 */
+.gradient-bg {
+  background: var(--gradient-primary);
+}
+
+/* 玻璃态卡片 */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* 3D效果容器 */
+.perspective-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* 动画过渡类 */
+.transition-all {
+  transition: all var(--duration-normal) var(--ease-bounce);
+}
+
+.transition-fast {
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+/* 悬停上浮效果 */
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-bounce),
+    box-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* 按钮悬停上浮效果 */
+.hover-lift-sm {
+  transition: transform var(--duration-fast) var(--ease-bounce);
+}
+
+.hover-lift-sm:hover {
+  transform: translateY(-3px);
+}
